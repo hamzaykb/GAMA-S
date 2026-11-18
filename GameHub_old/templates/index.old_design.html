@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FREE FIRE & SLMA</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --pink:#ff4fa3;
+  --purple:#a66bff;
+  --glass:rgba(255,255,255,.09);
+  --border:rgba(255,255,255,.18);
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Cairo',sans-serif;
+}
+
+body {
+  min-height:100vh;
+  color:white;
+  background:
+    radial-gradient(ellipse at 15% 15%,#59205d 0%,transparent 40%),
+    radial-gradient(ellipse at 85% 75%,#35206d 0%,transparent 42%),
+    linear-gradient(145deg,#090914,#171027 55%,#090914);
+  overflow-x:hidden;
+}
+
+body:before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,70,160,.12),transparent 35%),
+    linear-gradient(120deg,transparent 40%,rgba(255,255,255,.025),transparent 60%);
+  z-index:-1;
+}
+
+.container {
+  width:min(100% - 30px,520px);
+  margin:auto;
+  padding:22px 0 35px;
+}
+
+header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:28px;
+}
+
+.brand {
+  direction:ltr;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-shadow:0 0 18px rgba(255,75,160,.45);
+}
+
+.brand span {
+  color:#ff66b2;
+}
+
+.menu-icon {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--border);
+  border-radius:15px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  font-size:21px;
+}
+
+.intro {
+  text-align:center;
+  margin:15px 0 22px;
+}
+
+.intro h1 {
+  font-size:23px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.intro p {
+  color:#c9bdd8;
+  font-size:13px;
+}
+
+.pink {color:#ff69b4;}
+
+.glass {
+  background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.035));
+  border:1px solid var(--border);
+  box-shadow:0 12px 40px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.12);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+}
+
+.slider {
+  position:relative;
+  min-height:255px;
+  border-radius:25px;
+  overflow:hidden;
+  padding:25px 20px;
+  display:flex;
+  align-items:center;
+  margin-bottom:18px;
+  transition:.3s;
+}
+
+.slide {
+  display:none;
+  width:100%;
+  animation:appear .45s ease;
+}
+
+.slide.active {display:block;}
+
+@keyframes appear {
+  from {opacity:0;transform:translateY(10px);}
+  to {opacity:1;transform:translateY(0);}
+}
+
+.slide .art {
+  font-size:76px;
+  text-align:center;
+  filter:drop-shadow(0 0 20px rgba(255,80,180,.6));
+  margin-bottom:7px;
+}
+
+.slide h2 {
+  font-size:19px;
+  text-align:center;
+  line-height:1.8;
+}
+
+.slide p {
+  font-size:12px;
+  color:#d2c5df;
+  text-align:center;
+  margin-top:5px;
+}
+
+.dots {
+  position:absolute;
+  bottom:13px;
+  left:0;
+  right:0;
+  display:flex;
+  justify-content:center;
+  gap:9px;
+}
+
+.dot {
+  width:8px;
+  height:8px;
+  border-radius:20px;
+  background:#ffffff55;
+  border:0;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.dot.active {
+  width:24px;
+  background:var(--pink);
+  box-shadow:0 0 12px var(--pink);
+}
+
+.section-title {
+  font-size:16px;
+  font-weight:800;
+  margin:25px 3px 12px;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.card {
+  padding:17px 14px;
+  border-radius:19px;
+  min-height:115px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.card:active {transform:scale(.97);}
+
+.card .emoji {
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.card h3 {font-size:14px;}
+
+.card p {
+  color:#c4b8d0;
+  font-size:11px;
+  margin-top:3px;
+}
+
+.page {display:none;}
+.page.active {display:block;}
+
+.status {
+  margin-top:18px;
+  padding:16px;
+  border-radius:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+}
+
+.status small {
+  display:block;
+  color:#bdb1ca;
+  font-size:11px;
+}
+
+.status button {
+  border:1px solid #ff72b455;
+  background:#ff4fa322;
+  color:#ff8bc5;
+  border-radius:12px;
+  padding:9px 13px;
+  cursor:pointer;
+}
+
+#apiResult {
+  color:#cfc2dc;
+  font-size:11px;
+  margin-top:8px;
+}
+
+.setting {
+  padding:16px;
+  border-radius:17px;
+  margin-bottom:12px;
+}
+
+.setting h3 {font-size:14px;margin-bottom:7px;}
+
+.setting p {
+  font-size:12px;
+  color:#c4b8d0;
+}
+
+.contact {
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.contact a {
+  flex:1;
+  text-decoration:none;
+  color:white;
+  text-align:center;
+  padding:12px 5px;
+  border-radius:13px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  font-size:13px;
+}
+
+select {
+  width:100%;
+  margin-top:9px;
+  padding:10px;
+  border-radius:11px;
+  color:white;
+  background:#241934;
+  border:1px solid var(--border);
+}
+
+.nav {
+  display:flex;
+  justify-content:space-around;
+  gap:8px;
+  margin-top:25px;
+  padding:10px;
+  border-radius:20px;
+  position:sticky;
+  bottom:10px;
+  z-index:5;
+}
+
+.nav button {
+  flex:1;
+  border:0;
+  border-radius:13px;
+  background:transparent;
+  color:#c6b8d3;
+  padding:9px 3px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.nav button.active {
+  color:white;
+  background:linear-gradient(135deg,#ff4fa344,#a66bff44);
+  box-shadow:inset 0 0 0 1px #ff8ac755;
+}
+
+footer {
+  text-align:center;
+  margin-top:25px;
+  color:#a99bb8;
+  font-size:11px;
+  letter-spacing:1px;
+  direction:ltr;
+}
+
+footer span {color:#ff70b8;}
+
+@media(max-width:360px) {
+  .brand {font-size:17px;}
+  .intro h1 {font-size:20px;}
+  .slider {min-height:240px;}
+}
+.slide .art img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 18px rgba(255,80,180,.45));
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="brand">FREE FIRE <span>& SLMA</span></div>
+  <div class="menu-icon">☰</div>
+</header>
+
+<main id="home" class="page active">
+
+  <div class="intro">
+    <h1>مرحبا بك في عالم <span class="pink">الروبوت الذكي</span></h1>
+    <p>اكتشف أدواتنا وميزاتنا المخصصة لعالم Free Fire</p>
+  </div>
+
+  <section class="slider glass">
+
+    <div class="slide active">
+      <div class="art">
+  <img src="/static/images/slide1.png" alt="الشخصية الأولى">
+</div>
+      <h2>مرحباً بك في عالم الروبوت الذكي</h2>
+      <p>تجربة مختلفة، بواجهة ذكية وسهلة الاستخدام</p>
+    </div>
+    <div class="slide">
+      <div class="art">
+  <img src="/static/images/slide2.png" alt="الشخصية الثانية">
+</div>
+      <h2>روبوتنا الذكي يقدم أفضل الميزات المتوفرة</h2>
+      <p>اكتشف الأدوات والخدمات المصممة خصيصاً لك</p>
+    </div>
+
+    <div class="slide">
+      <div class="art">
+  <img src="/static/images/slide3.png" alt="الشخصية الثالثة">
+</div>
+      <h2>هل واجهت مشكلة؟</h2>
+      <p>يمكنك إبلاغنا عبر مواقع التواصل من الإعدادات</p>
+    </div>
+
+    <div class="dots">
+      <button class="dot active" onclick="showSlide(0)"></button>
+      <button class="dot" onclick="showSlide(1)"></button>
+      <button class="dot" onclick="showSlide(2)"></button>
+    </div>
+  </section>
+
+  <h2 class="section-title">✦ استكشف خدماتنا</h2>
+
+  <div class="cards">
+    <div class="card glass">
+      <div class="emoji">🎮</div>
+      <h3>أدوات Free Fire</h3>
+      <p>خدمات وأدوات اللعبة</p>
+    </div>
+
+    <div class="card glass">
+      <div class="emoji">🤖</div>
+      <h3>الروبوت الذكي</h3>
+      <p>ميزات ذكية وتجربة سهلة</p>
+    </div>
+
+    <div class="card glass">
+      <div class="emoji">⚙️</div>
+      <h3>الإعدادات</h3>
+      <p>تخصيص تجربتك</p>
+    </div>
+
+    <div class="card glass">
+      <div class="emoji">🛡️</div>
+      <h3>الدعم والمساعدة</h3>
+      <p>نحن هنا لمساعدتك</p>
+    </div>
+  </div>
+
+  <div class="status glass">
+    <div>
+      <strong>حالة الاتصال بالخادم</strong>
+      <small id="serverState">لم يتم الفحص بعد</small>
+      <div id="apiResult"></div>
+    </div>
+    <button onclick="checkAPI()">فحص API</button>
+  </div>
+</main>
+
+<section id="tools" class="page">
+  <div class="intro">
+    <h1>أدوات <span class="pink">Free Fire</span></h1>
+    <p>كل الخدمات في مكان واحد</p>
+  </div>
+
+  <div class="card glass">
+    <div class="emoji">🎯</div>
+    <h3>قريباً...</h3>
+    <p>سيتم إضافة الأدوات بعد ربط خدمات API.</p>
+  </div>
+</section>
+
+<section id="settings" class="page">
+  <div class="intro">
+    <h1>الإعدادات <span class="pink">⚙️</span></h1>
+    <p>خصص واجهتك وتواصل معنا</p>
+  </div>
+
+  <div class="setting glass">
+    <h3>🎨 لون الواجهة</h3>
+    <p>اختر اللون الذي تفضله</p>
+    <select id="colorChoice" onchange="changeColor(this.value)">
+      <option value="pink">وردي</option>
+      <option value="purple">بنفسجي</option>
+      <option value="blue">أزرق</option>
+    </select>
+  </div>
+
+  <div class="setting glass">
+    <h3>🔤 حجم الخط</h3>
+    <p>تغيير حجم النصوص في الموقع</p>
+    <select id="fontChoice" onchange="changeFont(this.value)">
+      <option value="14">عادي</option>
+      <option value="15">متوسط</option>
+      <option value="16">كبير</option>
+    </select>
+  </div>
+
+  <div class="setting glass">
+    <h3>📱 تواصل معنا</h3>
+    <p>يمكنك التواصل معنا عبر المنصات التالية</p>
+    <div class="contact">
+      <a href="#" onclick="return false">Telegram</a>
+      <a href="#" onclick="return false">WhatsApp</a>
+    </div>
+    <p style="margin-top:10px">روابط التواصل ستضاف لاحقاً.</p>
+  </div>
+
+  <div class="setting glass">
+    <h3>ℹ️ حول الموقع</h3>
+    <p>FREE FIRE & SLMA</p>
+    <p>GAME FF with SLMA</p>
+    <p>الإصدار 1.0</p>
+  </div>
+</section>
+
+<nav class="nav glass">
+  <button class="active" onclick="openPage('home',this)">⌂ الرئيسية</button>
+  <button onclick="openPage('tools',this)">⚡ الأدوات</button>
+  <button onclick="openPage('settings',this)">⚙ الإعدادات</button>
+</nav>
+
+<footer>GAME FF <span>with SLMA</span></footer>
+
+</div>
+
+<script>
+function openPage(id,btn) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showSlide(index) {
+  document.querySelectorAll('.slide').forEach((s,i)=>{
+    s.classList.toggle('active',i===index);
+  });
+  document.querySelectorAll('.dot').forEach((d,i)=>{
+    d.classList.toggle('active',i===index);
+  });
+}
+
+async function checkAPI() {
+  const state=document.getElementById('serverState');
+  const result=document.getElementById('apiResult');
+  state.textContent='جارٍ الفحص...';
+  result.textContent='';
+  try {
+    const response=await fetch('/api/status');
+    if(!response.ok) throw new Error('HTTP '+response.status);
+    const data=await response.json();
+    state.textContent='● متصل بنجاح';
+    state.style.color='#70ffb0';
+    result.textContent='المشروع: '+data.project+' | الإصدار: '+data.version;
+  } catch(error) {
+    state.textContent='● تعذر الاتصال';
+    state.style.color='#ff7777';
+    result.textContent='تحقق من تشغيل الخادم.';
+  }
+}
+
+function changeColor(color) {
+  const colors={
+    pink:['#ff4fa3','#a66bff'],
+    purple:['#a66bff','#6845dc'],
+    blue:['#42a5ff','#775dff']
+  };
+  document.documentElement.style.setProperty('--pink',colors[color][0]);
+  document.documentElement.style.setProperty('--purple',colors[color][1]);
+  localStorage.setItem('gamehub-color',color);
+}
+
+function changeFont(size) {
+  document.querySelectorAll('p,h1,h2,h3,button').forEach(el=>{
+    el.style.fontSize=size+'px';
+  });
+  localStorage.setItem('gamehub-font',size);
+}
+
+const savedColor=localStorage.getItem('gamehub-color');
+const savedFont=localStorage.getItem('gamehub-font');
+if(savedColor) {
+  document.getElementById('colorChoice').value=savedColor;
+  changeColor(savedColor);
+}
+if(savedFont) {
+  document.getElementById('fontChoice').value=savedFont;
+  changeFont(savedFont);
+}
+</script>
+</body>
+</html>

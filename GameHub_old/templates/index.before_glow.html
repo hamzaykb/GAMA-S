@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e9a8c8">
+<title>FREE FIRE & SLMA</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:Arial,sans-serif;
+ color:#fff;min-height:100vh;
+ position:relative;isolation:isolate;
+ background:#100812;
+}
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ z-index:-1;
+ pointer-events:none;
+ background:
+ radial-gradient(ellipse at 50% 18%, rgba(155,45,210,.28), transparent 48%),
+ radial-gradient(ellipse at 5% 55%, rgba(220,45,130,.10), transparent 42%),
+ radial-gradient(ellipse at 95% 85%, rgba(120,35,190,.13), transparent 45%),
+ #100812;
+}
+.container{width:min(100% - 28px,480px);margin:auto;padding:22px 0 30px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.logo{font-size:21px;font-weight:900;direction:ltr;text-shadow:0 2px 15px #8d2868}
+.logo span{color:#ffb0dc}
+.menu{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;font-size:22px}
+.glass{
+ background:rgba(255,255,255,.14);
+ border:1px solid rgba(255,255,255,.38);
+ box-shadow:0 10px 35px rgba(45,10,40,.22),inset 0 1px 1px rgba(255,255,255,.4);
+ backdrop-filter:blur(20px);
+ -webkit-backdrop-filter:blur(20px);
+}
+.hero{
+ border:0;
+ background:transparent;
+ box-shadow:none;
+ padding:0;
+ margin-bottom:20px;
+ overflow:visible;
+ position:relative;
+ border-radius:0;
+}
+
+.hero img{
+ display:block;
+ width:100%;
+ height:auto;
+ object-fit:contain;
+ filter:drop-shadow(0 8px 18px rgba(190,0,255,.12));
+ border-radius:0;
+}
+.welcome{text-align:center;margin:18px 0 22px}
+.welcome h1{font-size:23px;text-shadow:0 2px 15px #702d65}
+.welcome p{font-size:13px;color:#fff;margin-top:8px}
+.pink{color:#ffd0e9}
+.section-title{font-size:17px;margin:22px 3px 12px;text-shadow:0 2px 10px #58264d}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{border-radius:20px;padding:17px 13px;min-height:115px}
+.card .emoji{font-size:26px;margin-bottom:8px}
+.card h3{font-size:14px}
+.card p{font-size:11px;color:#fff;margin-top:6px}
+.page{display:none}
+.page.active{display:block}
+.status{margin-top:17px;padding:16px;border-radius:18px;font-size:13px}
+.status small{display:block;margin-top:6px;color:#fff}
+.status button{
+ background:rgba(255,105,180,.3);color:white;
+ border:1px solid #ffc4e5;border-radius:12px;padding:9px 13px
+}
+.status-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.setting{padding:16px;border-radius:18px;margin-bottom:12px}
+.setting h3{font-size:14px;margin-bottom:8px}
+.setting p{font-size:12px;color:white}
+select{
+ width:100%;margin-top:10px;padding:11px;border-radius:12px;
+ background:rgba(70,35,70,.85);color:white;border:1px solid #ffffff70
+}
+.contact{display:flex;gap:10px;margin-top:12px}
+.contact a{
+ flex:1;text-align:center;text-decoration:none;color:white;
+ padding:12px;border-radius:13px;background:#ffffff20;border:1px solid #ffffff60
+}
+.nav{
+ display:flex;gap:7px;padding:9px;border-radius:20px;
+ position:sticky;bottom:10px;margin-top:25px;z-index:5
+}
+.nav button{
+ flex:1;border:0;border-radius:13px;background:transparent;
+ color:white;padding:12px 3px;font-size:12px
+}
+.nav button.active{background:rgba(255,135,200,.35);border:1px solid #ffffff65}
+footer{text-align:center;font-size:11px;margin-top:22px;color:white;direction:ltr}
+footer span{color:#ffd0e9}
+@media(max-width:360px){.hero img{height:280px}.welcome h1{font-size:20px}}
+</style>
+</head>
+
+<body>
+<div class="container">
+<header>
+ <div class="logo">FREE FIRE <span>& SLMA</span></div>
+ <div class="menu glass">☰</div>
+</header>
+
+<main id="home" class="page active">
+ <section class="hero glass">
+  <img src="/static/images/HERO_NEW.png" alt="شخصية SLMA">
+ </section>
+
+ <section class="welcome">
+  <h1>مرحباً بك في عالم <span class="pink">الروبوت الذكي</span></h1>
+  <p>نحن هنا لنقدم لك تجربة مميزة في عالم Free Fire</p>
+ </section>
+
+ <h2 class="section-title">✦ اكتشف خدماتنا</h2>
+ <div class="cards">
+  <div class="card glass">
+   <div class="emoji">🎮</div>
+   <h3>أدوات Free Fire</h3>
+   <p>خدمات وأدوات اللعبة</p>
+  </div>
+  <div class="card glass">
+   <div class="emoji">🤖</div>
+   <h3>الروبوت الذكي</h3>
+   <p>ميزات ذكية وسهلة</p>
+  </div>
+  <div class="card glass">
+   <div class="emoji">⚡</div>
+   <h3>خدماتنا</h3>
+   <p>اكتشف المزيد قريباً</p>
+  </div>
+  <div class="card glass">
+   <div class="emoji">🛡️</div>
+   <h3>الدعم والمساعدة</h3>
+   <p>نحن هنا لمساعدتك</p>
+  </div>
+ </div>
+
+ <div class="status glass">
+  <div class="status-row">
+   <div><strong>حالة الاتصال بالخادم</strong><small id="serverState">لم يتم الفحص بعد</small></div>
+   <button onclick="checkAPI()">فحص API</button>
+  </div>
+  <small id="apiResult"></small>
+ </div>
+</main>
+
+<section id="tools" class="page">
+ <div class="welcome"><h1>أدوات <span class="pink">Free Fire</span></h1><p>خدماتنا ستضاف هنا قريباً</p></div>
+ <div class="card glass"><div class="emoji">⚡</div><h3>قريباً</h3><p>نعمل على تجهيز الأدوات والخدمات.</p></div>
+</section>
+
+<section id="settings" class="page">
+ <div class="welcome"><h1>الإعدادات ⚙️</h1><p>خصص تجربتك وتواصل معنا</p></div>
+ <div class="setting glass">
+  <h3>🎨 لون الواجهة</h3>
+  <p>اختر اللون المفضل</p>
+  <select id="colorChoice" onchange="changeColor(this.value)">
+   <option value="pink">وردي</option>
+   <option value="purple">بنفسجي</option>
+   <option value="blue">أزرق</option>
+  </select>
+ </div>
+ <div class="setting glass">
+  <h3>🔤 حجم الخط</h3>
+  <select id="fontChoice" onchange="changeFont(this.value)">
+   <option value="14">عادي</option>
+   <option value="16">متوسط</option>
+   <option value="18">كبير</option>
+  </select>
+ </div>
+ <div class="setting glass">
+  <h3>📱 تواصل معنا</h3>
+  <p>روابط التواصل ستضاف لاحقاً</p>
+  <div class="contact">
+   <a href="#" onclick="return false">Telegram</a>
+   <a href="#" onclick="return false">WhatsApp</a>
+  </div>
+ </div>
+ <div class="setting glass">
+  <h3>حول الموقع</h3>
+  <p>FREE FIRE & SLMA</p>
+  <p>GAME FF with SLMA — الإصدار 1.0</p>
+ </div>
+</section>
+
+<nav class="nav glass">
+ <button class="active" onclick="openPage('home',this)">⌂ الرئيسية</button>
+ <button onclick="openPage('tools',this)">⚡ الأدوات</button>
+ <button onclick="openPage('settings',this)">⚙ الإعدادات</button>
+</nav>
+<footer>GAME FF <span>with SLMA</span></footer>
+</div>
+
+<script>
+function openPage(id,btn){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+async function checkAPI(){
+ const state=document.getElementById('serverState');
+ const result=document.getElementById('apiResult');
+ state.textContent='جارٍ الفحص...';
+ try{
+  const r=await fetch('/api/status');
+  if(!r.ok)throw Error('HTTP '+r.status);
+  const d=await r.json();
+  state.textContent='● متصل بنجاح';
+  result.textContent='المشروع: '+d.project+' | الإصدار: '+d.version;
+ }catch(e){
+  state.textContent='● تعذر الاتصال';
+  result.textContent='تحقق من تشغيل الخادم.';
+ }
+}
+function changeColor(c){
+ const colors={pink:'#ff85c5',purple:'#b58aff',blue:'#72baff'};
+ document.documentElement.style.setProperty('--pink',colors[c]);
+ localStorage.setItem('gamehub-color',c);
+}
+function changeFont(s){
+ document.querySelectorAll('p,h1,h2,h3,button').forEach(e=>e.style.fontSize=s+'px');
+ localStorage.setItem('gamehub-font',s);
+}
+const c=localStorage.getItem('gamehub-color');
+const f=localStorage.getItem('gamehub-font');
+if(c){document.getElementById('colorChoice').value=c;changeColor(c)}
+if(f){document.getElementById('fontChoice').value=f;changeFont(f)}
+</script>
+</body>
+</html>

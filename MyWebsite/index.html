@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة تحكمي</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 30px;
+  background: #10101a;
+  color: white;
+  font-family: Arial;
+}
+.card {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #202033;
+  border: 1px solid #854dff;
+  border-radius: 18px;
+}
+button, select {
+  padding: 12px;
+  border-radius: 9px;
+  border: none;
+  margin: 6px;
+}
+button { background: #854dff; color: white; }
+h1 { color: #b99aff; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>مرحباً بك 👋</h1>
+  <p>هذه أول لوحة تحكم خاصة بك.</p>
+
+  <button onclick="settings()">
+    الإعدادات ⚙️
+  </button>
+
+  <div id="settings" hidden>
+    <h3>إعدادات الموقع</h3>
+    <label>لون الواجهة:</label>
+    <select onchange="changeColor(this.value)">
+      <option value="#854dff">بنفسجي</option>
+      <option value="#ff4081">وردي</option>
+      <option value="#00bcd4">أزرق</option>
+    </select>
+  </div>
+</div>
+
+<script>
+function settings() {
+  const panel = document.getElementById("settings");
+  panel.hidden = !panel.hidden;
+}
+
+function changeColor(color) {
+  document.querySelector(".card").style.borderColor = color;
+  document.querySelector("h1").style.color = color;
+  localStorage.setItem("myColor", color);
+}
+
+const saved = localStorage.getItem("myColor");
+if (saved) changeColor(saved);
+</script>
+</body>
+</html>
+
